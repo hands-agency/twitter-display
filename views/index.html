@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title> Twitter Hands </title>
+
+	<!-- Meta -->
+
+	<link rel="stylesheet" type="text/css" href="/resources/css/filtwitter.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/slick.css">
+	<script type="text/javascript" src="/resources/js/twitter-text.js"></script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="hands-presentation">
+			<h1> Shake <span>Hands</span> </h1>
+		</div>
+
+		<div class="slick-tweets">
+			<div class="slickyy">
+				<%
+					listeTweets.forEach(function(tweet, index){
+				%>
+					<div style="background-color: #fff">
+						<div class="media-twitter">
+							<%
+								if(tweet.extended_entities){
+									if(tweet.extended_entities.media[0].type == 'animated_gif')
+										{
+										%>
+										<video 
+										width="<%= tweet.extended_entities.media[0].sizes.large.w %>" 
+										height="<%= tweet.extended_entities.media[0].sizes.large.h %>" loop 
+										poster="<%= tweet.extended_entities.media[0].media_url %>">
+										  <source src="<%= tweet.extended_entities.media[0].video_info.variants[0].url %>" type="video/mp4">
+										</video>
+										<%
+										}
+									else
+										{
+							%>
+										<img src="<%= tweet.extended_entities.media[0].media_url %>" />
+									<% } %>
+							<% }
+								else if(tweet.entities.media)
+								{
+							%>
+							<img src="<%= tweet.entities.media[0].media_url %>" />
+							<%
+								}
+							%>
+						</div>
+						<div class="text-twitter">
+							<p class="text">
+								<%= tweet.text %>
+							</p>
+							<p class="author">
+								By : <a href="<%= tweet.user.url %>" target="_blank"><%= tweet.user.name %></a>
+							</p>
+						</div>
+						<p>
+							
+						</p>
+					</div>
+				<%
+					});
+				%>
+			</div>
+			
+			
+			
+		</div>
+
+		
+	</div>
+
+
+	<!-- JS -->
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script type="text/javascript" src="/resources/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/resources/js/slick.min.js"></script>
+	<script type="text/javascript" src="/resources/js/filtwitter.js"></script>
+
+</body>
+</html>
