@@ -27,10 +27,10 @@ var port        = process.env.VCAP_APP_PORT || process.env.PORT || 8081;
 
 // TWITTER
 var client = new twitter({
-  consumer_key: '',
-  consumer_secret: '',
-  access_token_key: '',
-  access_token_secret: ''
+  consumer_key: '52zAOkgxVja573f2Ru7d2ANVh',
+  consumer_secret: 'L76VaUvWC0vBxjt5XHHtTMNBzvtlluh5Gr9rsnPrCKWOa0rd22',
+  access_token_key: '3686811135-cG5LYnJ97aLTFhBq9XOjpzH3Em7RxikS1O2EC1q',
+  access_token_secret: 'WMn6o6tKbdkITsUjjEtX5qlliltcM5SprPpE7IS8blCFh'
 });
 
 var params = ['text','user','geo','coordinates','place','retweet_count','favorite_count','entities', 'extended_entities'];
@@ -46,8 +46,14 @@ client.get('/search/tweets', {q: 'handsagency'}, function(error, tweets, respons
       client.get('statuses/show', {id: thetweet.id_str}, function(error, tweets, response){
         var tweet = new Tweet(tweets);
         // tweet.addUrlsToText();
-        console.log(tweet.user.name);
-        console.log(tweet.text);
+        if(tweet.user.name == 'Simon Loizeau')
+        {
+          console.log(tweet);
+          console.log(tweet.entities);
+          console.log(tweet.extended_entities);
+          console.log(tweet.entities.media[0].sizes);
+          console.log(tweet.extended_entities.media[0].sizes);
+        }
         var toSend = tweet.toSend(params);
         listeTweets.push(toSend);
       });
@@ -55,9 +61,8 @@ client.get('/search/tweets', {q: 'handsagency'}, function(error, tweets, respons
     else
     {
       var tweet = new Tweet(thetweet);
-      // tweet.addUrlsToText();
-      console.log(tweet.user.name);
-      console.log(tweet.text);
+      // console.log(tweet);
+      // console.log(tweet.entities);
       var toSend = tweet.toSend(params);
       listeTweets.push(toSend);
     }

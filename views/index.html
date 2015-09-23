@@ -11,66 +11,74 @@
 <body>
 
 	<div class="content">
-		<div class="hands-presentation">
-			<h1> Shake <span>Hands</span> </h1>
+
+		<div class="bloc-media">
+
+			<div class="slickyy slicky-media">
+				<% listeTweets.forEach(function(tweet, index){ %>
+					<% if(tweet.extended_entities || tweet.entities.media) { %>
+					<div class="media-twitter">
+						<%
+							if(tweet.extended_entities){
+								if(tweet.extended_entities.media[0].type == 'animated_gif')
+									{
+									%>
+									<video 
+									width="<%= tweet.extended_entities.media[0].sizes.medium.w %>" 
+									height="<%= tweet.extended_entities.media[0].sizes.medium.h %>" loop 
+									style="margin-left: -<%= (tweet.extended_entities.media[0].sizes.medium.w / 2) + "px" %>;
+										margin-top: -<%= (tweet.extended_entities.media[0].sizes.medium.h / 2) + "px" %>;"
+									poster="<%= tweet.extended_entities.media[0].media_url %>">
+									  <source src="<%= tweet.extended_entities.media[0].video_info.variants[0].url %>" type="video/mp4">
+									</video>
+									<%
+									}
+								else
+									{
+						%>
+									<img src="<%= tweet.extended_entities.media[0].media_url %>"
+									width="<%= tweet.extended_entities.media[0].sizes.medium.w + "px" %>" 
+									height="<%= tweet.extended_entities.media[0].sizes.medium.h + "px" %>"
+									style="margin-left: -<%= (tweet.extended_entities.media[0].sizes.medium.w / 2) + "px" %>;
+										margin-top: -<%= (tweet.extended_entities.media[0].sizes.medium.h / 2) + "px" %>;" 
+									/>
+								<% } %>
+						<% }
+							else if(tweet.entities.media)
+							{
+						%>
+						<img src="<%= tweet.entities.media[0].media_url %>" 
+						width="<%= tweet.entities.media[0].sizes.medium.w %>" 
+						height="<%= tweet.entities.media[0].sizes.medium.h %>"
+						/>
+						<%
+							}
+						%>
+					</div>
+					<% } %>
+				<% }); %>
+			</div>
+
 		</div>
 
-		<div class="slick-tweets">
-			<div class="slickyy">
-				<%
-					listeTweets.forEach(function(tweet, index){
-				%>
-					<div style="background-color: #fff">
-						<div class="media-twitter">
-							<%
-								if(tweet.extended_entities){
-									if(tweet.extended_entities.media[0].type == 'animated_gif')
-										{
-										%>
-										<video 
-										width="<%= tweet.extended_entities.media[0].sizes.large.w %>" 
-										height="<%= tweet.extended_entities.media[0].sizes.large.h %>" loop 
-										poster="<%= tweet.extended_entities.media[0].media_url %>">
-										  <source src="<%= tweet.extended_entities.media[0].video_info.variants[0].url %>" type="video/mp4">
-										</video>
-										<%
-										}
-									else
-										{
-							%>
-										<img src="<%= tweet.extended_entities.media[0].media_url %>" />
-									<% } %>
-							<% }
-								else if(tweet.entities.media)
-								{
-							%>
-							<img src="<%= tweet.entities.media[0].media_url %>" />
-							<%
-								}
-							%>
-						</div>
-						<div class="text-twitter">
-							<p class="text">
-								<%= tweet.text %>
-							</p>
-							<p class="author">
-								By : <a href="<%= tweet.user.url %>" target="_blank"><%= tweet.user.name %></a>
-							</p>
-						</div>
-						<p>
-							
+		<div class="bloc-text">
+
+			<div class="slickyy slicky-text">
+				<% listeTweets.forEach(function(tweet, index){ %>
+					<% if(tweet.extended_entities || tweet.entities.media) { %>
+					<div class="text-twitter">
+						<p class="text">
+							<%= tweet.text %>
+						</p>
+						<p class="author">
+							By : <a href="<%= tweet.user.url %>" target="_blank"><%= tweet.user.name %></a>
 						</p>
 					</div>
-				<%
-					});
-				%>
+					<% } %>
+				<% }); %>
 			</div>
-			
-			
-			
-		</div>
 
-		
+		</div>
 	</div>
 
 

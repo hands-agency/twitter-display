@@ -39,6 +39,10 @@
     cursor: pointer;
     cursor: hand;
 }
+.slick-list.draggable
+{
+    padding: 0px 0px !important;
+}
 
 .slick-slider .slick-track,
 .slick-slider .slick-list
@@ -109,8 +113,6 @@
 .slick-vertical .slick-slide
 {
     display: block;
-
-    height: auto;
-
+    /*height: auto;*/
     border: 1px solid transparent;
 }
