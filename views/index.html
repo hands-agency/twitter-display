@@ -63,19 +63,31 @@
 
 		<div class="bloc-text">
 
+			<div class="text-head">
+				<p class="arts"> Arts & Métiers </p>
+				<p class="grandopening"> GRAND OPENING </p>
+			</div>
+
 			<div class="slickyy slicky-text">
 				<% listeTweets.forEach(function(tweet, index){ %>
 					<% if(tweet.extended_entities || tweet.entities.media) { %>
-					<div class="text-twitter">
-						<p class="text">
-							<%= tweet.text %>
-						</p>
-						<p class="author">
-							By : <a href="<%= tweet.user.url %>" target="_blank"><%= tweet.user.name %></a>
-						</p>
+					<div class="bloc-tweet">
+						<div class="text-twitter">
+							<p class="text">
+								<%= tweet.text %>
+							</p>
+							<!-- <p class="author">
+								<a href="<%= tweet.user.url %>" target="_blank"><%= tweet.user.name %></a>
+							</p> -->
+						</div>
 					</div>
 					<% } %>
 				<% }); %>
+			</div>
+
+			<div class="text-footer">
+				<p class="shake"> SHAKE </p>
+				<p> <img src=""> </p>
 			</div>
 
 		</div>

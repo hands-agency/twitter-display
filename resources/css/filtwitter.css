@@ -87,8 +87,38 @@ button
          url('/resources/font/playfair/playfairdisplay-bold-webfont.svg#playfair_displaybold') format('svg');
     font-weight: 700;
     font-style: normal;
-
 }
+
+/* Montserrat */
+@font-face {
+    font-family: 'montserrat';
+    src: url('/resources/font/montserrat/montserrat-black-webfont.eot');
+    src: url('/resources/font/montserrat/montserrat-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/resources/font/montserrat/montserrat-black-webfont.woff2') format('woff2'),
+         url('/resources/font/montserrat/montserrat-black-webfont.woff') format('woff'),
+         url('/resources/font/montserrat/montserrat-black-webfont.ttf') format('truetype'),
+         url('/resources/font/montserrat/montserrat-black-webfont.svg#montserratblack') format('svg');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'montserrat';
+    src: url('/resources/font/montserrat/montserrat-light-webfont.eot');
+    src: url('/resources/font/montserrat/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/resources/font/montserrat/montserrat-light-webfont.woff2') format('woff2'),
+         url('/resources/font/montserrat/montserrat-light-webfont.woff') format('woff'),
+         url('/resources/font/montserrat/montserrat-light-webfont.ttf') format('truetype'),
+         url('/resources/font/montserrat/montserrat-light-webfont.svg#montserratlight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'montserrat';
+    src:   url('/resources/font/montserrat/Montserrat-UltraLight.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
 
 /* Div content */
 .content
@@ -109,6 +139,7 @@ button
 .media-twitter
 {
   position: relative;
+  background-color: #eeeeee;
 }
 
 .media-twitter img, .media-twitter video
@@ -121,53 +152,92 @@ button
 
 .bloc-text
 {
-  /*background-color: #222;*/
-  background-color: #fff;
+  background-color: #222;
   position: relative;
 }
 
-.bloc-text h1
+.bloc-text .text-head
+{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+}
+.bloc-text .text-head p.arts
 {
   font-family: playfair;
   font-weight: 400;
-  font-size: 200px;
-  line-height: 200px;
-  text-align: center;
-  color: #0492ce;
   font-style: italic;
+  font-size: 25px;
+  line-height: 30px;
+  color: #0492ce;
+  text-align: center;
+}
+.bloc-text .text-head p.grandopening
+{
+  font-family: montserrat;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 35px;
+  color: #eeeeee;
+  text-align: center;
+}
+
+.bloc-text .text-footer
+{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+
+.bloc-text .text-footer p.shake
+{
+  font-family: montserrat;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 25px;
+  color: #0492ce;
+  text-align: center;
+}
+
+.bloc-text .text-footer p.hands img
+{
+  text-align: center;
+}
+
+.bloc-text .slicky-text p.text
+{
+  font-family: montserrat;
+  font-weight: 100;
+  font-size: 36px;
+  line-height: 40px;
+  color: #eeeeee;
+  text-align: center;
+}
+
+.bloc-text .slicky-text p.text a, .bloc-text .slicky-text p.author a
+{
+  font-family: montserrat;
+  font-weight: 200;
+  text-decoration: none;
+  color: #009ee0;
+}
+
+.bloc-text .bloc-tweet
+{
+  position: relative;
+ 
+}
+
+.bloc-text .bloc-tweet .text-twitter
+{
   position: absolute;
   width: 100%;
+  top: 45%;
   left: 0;
-  top: 50%;
-  margin-top: -220px;
-}
-
-.bloc-text h1 span
-{
-  display: block;
-  color: #eee;
-}
-
-.bloc-text p.text
-{
-  font-family: playfair;
-  font-weight: 400;
-  font-size: 35px;
-  line-height: 38px;
-  color: #222;
-  text-align: center;
-}
-
-..bloc-text p.author, .bloc-text p.author a
-{
-  margin-top: 5px;
-  font-family: playfair;
-  font-weight: 200;
-  font-size: 30px;
-  line-height: 33px;
-  color: #0492ce;
-  text-align: right;
-  text-decoration: none;
+  word-wrap: break-word;
+  padding-left: 5px;
 }
 
 .slick-slider .slick-track, .slick-slider .slick-list {
