@@ -9,85 +9,45 @@
 	<script type="text/javascript" src="/resources/js/twitter-text.js"></script>
 </head>
 <body>
-
 	<div class="content">
-
 		<div class="bloc-media">
-
 			<div class="slickyy slicky-media">
 				<% listeTweets.forEach(function(tweet, index){ %>
 					<% if(tweet.extended_entities || tweet.entities.media) { %>
 					<div class="media-twitter">
-						<%
-							if(tweet.extended_entities){
-								if(tweet.extended_entities.media[0].type == 'animated_gif')
-									{
-									%>
-									<video 
-									width="<%= tweet.extended_entities.media[0].sizes.medium.w %>" 
-									height="<%= tweet.extended_entities.media[0].sizes.medium.h %>" loop 
-									style="margin-left: -<%= (tweet.extended_entities.media[0].sizes.medium.w / 2) + "px" %>;
-										margin-top: -<%= (tweet.extended_entities.media[0].sizes.medium.h / 2) + "px" %>;"
-									poster="<%= tweet.extended_entities.media[0].media_url %>">
+						<% if(tweet.extended_entities){
+								if(tweet.extended_entities.media[0].type == "animated_gif") { %>
+									<video width="<%= tweet.extended_entities.media[0].sizes.medium.w %>" height="<%= tweet.extended_entities.media[0].sizes.medium.h %>" loop style="margin-left: -<%= (tweet.extended_entities.media[0].sizes.medium.w / 2) + "px" %>; margin-top: -<%= (tweet.extended_entities.media[0].sizes.medium.h / 2) + "px" %>;" poster="<%= tweet.extended_entities.media[0].media_url %>">
 									  <source src="<%= tweet.extended_entities.media[0].video_info.variants[0].url %>" type="video/mp4">
 									</video>
-									<%
-									}
-								else
-									{
-						%>
-									<img src="<%= tweet.extended_entities.media[0].media_url %>"
-									width="<%= tweet.extended_entities.media[0].sizes.medium.w + "px" %>" 
-									height="<%= tweet.extended_entities.media[0].sizes.medium.h + "px" %>"
-									style="margin-left: -<%= (tweet.extended_entities.media[0].sizes.medium.w / 2) + "px" %>;
-										margin-top: -<%= (tweet.extended_entities.media[0].sizes.medium.h / 2) + "px" %>;" 
-									/>
+									<% } else { %>
+									<img src="<%= tweet.extended_entities.media[0].media_url %>" width="<%= tweet.extended_entities.media[0].sizes.medium.w + "px" %>" height="<%= tweet.extended_entities.media[0].sizes.medium.h + "px" %>" style="margin-left: -<%= (tweet.extended_entities.media[0].sizes.medium.w / 2) + "px" %>; margin-top: -<%= (tweet.extended_entities.media[0].sizes.medium.h / 2) + "px" %>;" />
 								<% } %>
-						<% }
-							else if(tweet.entities.media)
-							{
-						%>
-						<img src="<%= tweet.entities.media[0].media_url %>" 
-						width="<%= tweet.entities.media[0].sizes.medium.w %>" 
-						height="<%= tweet.entities.media[0].sizes.medium.h %>"
+						<% } else if(tweet.entities.media){ %>
+						<img src="<%= tweet.entities.media[0].media_url %>" width="<%= tweet.entities.media[0].sizes.medium.w %>" height="<%= tweet.entities.media[0].sizes.medium.h %>" style="margin-left: -<%= (tweet.entities.media[0].sizes.medium.w / 2) + "px" %>; margin-top: -<%= (tweet.entities.media[0].sizes.medium.h / 2) + "px" %>;" 
 						/>
-						<%
-							}
-						%>
+						<% } %>
 					</div>
 					<% } %>
 				<% }); %>
 			</div>
-
 		</div>
-
 		<div class="bloc-text">
-
 			<div class="text-head">
 				<p class="arts"> Arts & Métiers </p>
 				<p class="grandopening"> GRAND OPENING </p>
 			</div>
-
 			<div class="slickyy slicky-text">
 				<% listeTweets.forEach(function(tweet, index){ %>
 					<% if(tweet.extended_entities || tweet.entities.media) { %>
-					<div class="bloc-tweet">
-						<div class="text-twitter">
-							<p class="text">
-								<%= tweet.text %>
-							</p>
-							<!-- <p class="author">
-								<a href="<%= tweet.user.url %>" target="_blank"><%= tweet.user.name %></a>
-							</p> -->
-						</div>
-					</div>
+					<div class="bloc-tweet"><div class="text-twitter"><p class="text"><%= tweet.text %></p></div></div>
 					<% } %>
 				<% }); %>
 			</div>
 
 			<div class="text-footer">
-				<p class="shake"> SHAKE </p>
-				<p> <img src=""> </p>
+				<!-- <p class="shake"> SHAKE </p> -->
+				<p> <img src="/resources/img/shakehands2.png"> </p>
 			</div>
 
 		</div>

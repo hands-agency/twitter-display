@@ -45,15 +45,6 @@ client.get('/search/tweets', {q: 'handsagency'}, function(error, tweets, respons
     {
       client.get('statuses/show', {id: thetweet.id_str}, function(error, tweets, response){
         var tweet = new Tweet(tweets);
-        // tweet.addUrlsToText();
-        if(tweet.user.name == 'Simon Loizeau')
-        {
-          console.log(tweet);
-          console.log(tweet.entities);
-          console.log(tweet.extended_entities);
-          console.log(tweet.entities.media[0].sizes);
-          console.log(tweet.extended_entities.media[0].sizes);
-        }
         var toSend = tweet.toSend(params);
         listeTweets.push(toSend);
       });
@@ -61,8 +52,6 @@ client.get('/search/tweets', {q: 'handsagency'}, function(error, tweets, respons
     else
     {
       var tweet = new Tweet(thetweet);
-      // console.log(tweet);
-      // console.log(tweet.entities);
       var toSend = tweet.toSend(params);
       listeTweets.push(toSend);
     }

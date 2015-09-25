@@ -6,6 +6,7 @@
 <font id="montserratregular" horiz-adv-x="1019" >
 <font-face units-per-em="2048" ascent="1638" descent="-410" />
 <missing-glyph horiz-adv-x="528" />
+<glyph unicode="&#xfb01;" horiz-adv-x="1284" d="M76 874v177h143v104q0 75 21.5 138.5t58 106.5t85 73t101.5 43.5t109 13.5q118 0 203 -49l-9 -205q-102 47 -188 47q-68 0 -107.5 -35t-39.5 -110v-127h284v-177h-284v-874h-234v874h-143zM856 1401q0 63 39 103t98 40t98 -40t39 -103q0 -61 -39 -101t-98 -40t-98 40 t-39 101zM877 0v1090h233v-1090h-233z" />
 <glyph unicode="&#xfb02;" horiz-adv-x="1333" d="M76 877l2 174h141v133q0 158 105.5 258t271.5 98q123 -3 203 -47l-6 -205q-68 53 -152 53q-82 2 -135 -52t-53 -140v-98h286l-2 -174h-284v-877h-234v877h-143zM913 0v1520h236v-1520h-236z" />
 <glyph horiz-adv-x="0" />
 <glyph horiz-adv-x="682" />
