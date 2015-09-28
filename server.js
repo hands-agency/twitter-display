@@ -18,10 +18,7 @@ app.use('/views', express.static(__dirname + '/views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// Vitesse de défilement + boolean (pas de loop, reste à la fin)
-
 var http = require('http');
-
 var host        = process.env.VCAP_APP_HOST || process.env.HOST || '127.0.0.1';
 var port        = process.env.VCAP_APP_PORT || process.env.PORT || 8081;
 
@@ -33,9 +30,8 @@ var client = new twitter({
   access_token_secret: ''
 });
 
-var params = ['text','user','geo','coordinates','place','retweet_count','favorite_count','entities', 'extended_entities'];
+var params = ['text','user','entities', 'extended_entities'];
 var listeTweets = [];
-
 
 client.get('/search/tweets', {q: 'handsagency'}, function(error, tweets, response){
   for(var i = 0; i < tweets.statuses.length; i++)
@@ -65,7 +61,6 @@ var io = require('socket.io').listen(server);
 
 client.stream('statuses/filter', {track: 'handsagency'}, function(stream) {
   stream.on('data', function(tweet) {
-
     if(tweet.entities.media)
     {
       client.get('statuses/show', {id: tweet.id_str}, function(error, tweets, response){

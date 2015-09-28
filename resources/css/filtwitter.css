@@ -192,17 +192,6 @@ button
   width: 100%;
   z-index: 1000;
 }
-
-/*.bloc-text .text-footer p.shake
-{
-  font-family: montserrat;
-  font-weight: 800;
-  font-size: 30px;
-  line-height: 25px;
-  color: #0492ce;
-  text-align: center;
-}*/
-
 .bloc-text .text-footer p
 {
   text-align: center;

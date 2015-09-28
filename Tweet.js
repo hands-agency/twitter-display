@@ -1,8 +1,5 @@
 var User = require('./User.js');
 
-var twitterText = require('twitter-text');
-var escape = require('escape-html');
-
 function Tweet(object)
 {
 	this.metadata = object['metadata'];
@@ -43,16 +40,6 @@ Tweet.prototype.toSend = function(params) {
 		data[params[i]] = this[params[i]];
 	}
 	return data;
-};
-
-// Tweet.prototype.addUrlsToText = function() {
-// 	this.text = addslashes(twitterText.autoLink(this.text));
-// };
-
-function addslashes(str) {
-  return (str + '')
-    .replace(/[\/\"']/g, '\\$&')
-    .replace(/\u0000/g, '\\0');
 };
 
 module.exports = Tweet;

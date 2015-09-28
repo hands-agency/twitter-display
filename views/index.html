@@ -1,9 +1,7 @@
 <html>
 <head>
 	<title> Twitter Hands </title>
-
-	<!-- Meta -->
-
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="/resources/css/filtwitter.css">
 	<link rel="stylesheet" type="text/css" href="/resources/css/slick.css">
 	<script type="text/javascript" src="/resources/js/twitter-text.js"></script>
@@ -45,8 +43,6 @@
 										var sizeY = '60';
 									}
 							%>
-
-
 						<img src="<%= tweet.entities.media[0].media_url %>" width="<%= sizeX + "%" %>" height="<%= sizeY + "%" %>" style="margin-left: -<%= (sizeX / 2) + "%" %>; margin-top: -<%= (sizeY / 2) + "%" %>;" 
 						/>
 						<% } %>
