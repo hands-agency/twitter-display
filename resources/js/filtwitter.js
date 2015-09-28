@@ -7,7 +7,6 @@ $(document).ready(function()
 		dots: false,
 		arrows:false,
 		infinite: true,
-		// centerMode: true,
 		speed: 300,
 		slidesToShow: 1,
 		adaptiveHeight: true,
@@ -25,7 +24,6 @@ $(document).ready(function()
 		dots: false,
 		arrows:false,
 		infinite: true,
-		// centerMode: true,
 		speed: 300,
 		slidesToShow: 1,
 		adaptiveHeight: true,
@@ -68,11 +66,21 @@ $(document).ready(function()
 		{
 			if(tweet.extended_entities)
 			{
+				if((tweet.extended_entities.media[0].sizes.medium.w / tweet.extended_entities.media[0].sizes.medium.h) < 1)
+				{
+					var sizeX = '60';
+					var sizeY = '80';
+				}
+				else
+				{
+					var sizeX = '80';
+					var sizeY = '60';
+				}
 				if(tweet.extended_entities.media[0].type == "animated_gif")
 				{
 					$('.slicky-media').slick('slickAdd', 
 						'<div class="media-twitter">'
-					+		'<video width="' + tweet.extended_entities.media[0].sizes.medium.w + '" height="' + tweet.extended_entities.media[0].sizes.medium.h + '" loop style="margin-left: -' + (tweet.extended_entities.media[0].sizes.medium.w / 2) + 'px; margin-top: -' + (tweet.extended_entities.media[0].sizes.medium.h / 2) + 'px;" poster="' + tweet.extended_entities.media[0].media_url + '">'
+					+		'<video width="' + sizeX + '%" height="' + sizeY + '%" loop style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + (sizeY / 2) + '%;" poster="' + tweet.extended_entities.media[0].media_url + '">'
 					+			  '<source src="' + tweet.extended_entities.media[0].video_info.variants[0].url + '" type="video/mp4">'
 					+		'</video>'
 					+	'</div>');
@@ -81,25 +89,38 @@ $(document).ready(function()
 				{
 					$('.slicky-media').slick('slickAdd', 
 						'<div class="media-twitter">'
-					+		'<img src="' + tweet.extended_entities.media[0].media_url  + '" width="' + tweet.extended_entities.media[0].sizes.medium.w + 'px" height="' + tweet.extended_entities.media[0].sizes.medium.h + 'px" style="margin-left: -' + (tweet.extended_entities.media[0].sizes.medium.w / 2) + 'px; margin-top: -' + (tweet.extended_entities.media[0].sizes.medium.h / 2) + 'px";" />'
+					+		'<img src="' + tweet.extended_entities.media[0].media_url  + '" width="' + sizeX + '%" height="' + sizeY + '%" style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + (sizeY / 2) + '%";" />'
 					+	'</div>');
 				}
 			}
 			 else if(tweet.entities.media)
 			 {
+			 	if((tweet.entities.media[0].sizes.medium.w / tweet.entities.media[0].sizes.medium.h) < 1)
+				{
+					var sizeX = '60';
+					var sizeY = '80';
+				}
+				else
+				{
+					var sizeX = '80';
+					var sizeY = '60';
+				}
 			 	$('.slicky-media').slick('slickAdd', 
 					'<div class="media-twitter">'
-				+		'<img src="' + tweet.entities.media[0].media_url + '" width="' + tweet.entities.media[0].sizes.medium.w  + '" height="' + tweet.entities.media[0].sizes.medium.h + '" style="margin-left: -' + (tweet.entities.media[0].sizes.medium.w / 2) + 'px; margin-top: -' + (tweet.entities.media[0].sizes.medium.h / 2) + 'px";"' 
+				+		'<img src="' + tweet.entities.media[0].media_url + '" width="' + sizeX  + '%" height="' + sizeY + '%" style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + (sizeY / 2) + '%";"' 
 				+		'/>'
 				+	'</div>');
 			 }
 		}
-
 		// Rajout dans text
 		if(tweet.extended_entities || tweet.entities.media)
 		{
 			$('.slicky-text').slick('slickAdd', 
-				'<div class="bloc-tweet"><div class="text-twitter"><p class="text">' + tweet.text + '</p></div></div>');
+				'<div class="bloc-tweet newtweet"><div class="text-twitter"><p class="text">' + tweet.text + '</p></div></div>');
+			$('.slicky-text .newtweet .text')
+			$('.slicky-text .newtweet .text').html(twttr.txt.autoLink($('.slicky-text .newtweet .text').html()));
+			$(".slicky-text .newtweet .text a").attr("target","_blank");
+			$('.slicky-text .newtweet').removeClass('newtweet');
 		}
 		
 	});
