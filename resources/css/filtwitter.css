@@ -129,6 +129,10 @@ button
   overflow: hidden;
 }
 
+.bloc-text
+{
+  float: right;
+}
 /* Hands Presentation */
 .bloc-media, .bloc-text
 {
