@@ -34,10 +34,11 @@ var params = ['text','user','entities', 'extended_entities'];
 var listeTweets = [];
 
 client.get('/search/tweets', {q: 'handsagency'}, function(error, tweets, response){
+  // console.log(tweets);
   for(var i = 0; i < tweets.statuses.length; i++)
   {
     var thetweet = tweets.statuses[i];
-    if(thetweet.entities.media)
+    if(thetweet.entities)
     {
       client.get('statuses/show', {id: thetweet.id_str}, function(error, tweets, response){
         var tweet = new Tweet(tweets);

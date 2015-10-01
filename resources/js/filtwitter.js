@@ -1,7 +1,9 @@
 $(document).ready(function()
 {
 	var socket = io.connect('http://127.0.0.1:8081');
+	// Initialisation des slicks
 
+	// Le slick de gauche qui contiendra le media (image ou gif)
 	$('.slicky-media').slick(
 	{
 		dots: false,
@@ -19,6 +21,7 @@ $(document).ready(function()
 		asNavFor: '.slicky-text'
 	});
 
+	// Le slick de droite qui contiendra le tweet
 	$('.slicky-text').slick(
 	{
 		dots: false,
@@ -37,33 +40,26 @@ $(document).ready(function()
 	});
 
 
-	if($('.slickyy .slick-active, .slickyy .slick-active').find('video').length > 0)
-	{
-		var video = $('.slickyy .slick-active').find('video').get(0).play();
-	}
+	// Pause ou Play sur une vidéo lors d'un changement de slide
+
+	if($('.slicky-media .slick-active').find('video').length > 0)
+		var video = $('.slicky-media .slick-active').find('video').get(0).play();
+
 	$('.slicky-media').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-		console.log('beforeChange');
-		if($('.slicky-media .slick-active').find('video').length > 0)
-		{
-			console.log('video trouvé');
-			$('.slicky-media .slick-active').find('video').get(0).pause();
-		}
+		if($(this).find('.slick-active video').length > 0)
+			$(this).find('.slick-active video').get(0).pause();
 	});
+
 	$('.slicky-media').on('afterChange', function(event, slick, currentSlide, nextSlide){
-		console.log('afterChange');
-		if($('.slicky-media .slick-active').find('video').length > 0)
-		{
-			console.log('video trouvé');
-	    	$('.slicky-media .slick-active').find('video').get(0).play();
-	    }
+		if($(this).find('.slick-active video').length > 0)
+	    	$(this).find('.slick-active video').get(0).play();
 	});
 
+	// A chaque nouveau tweet
 	socket.on('newtweet', function(tweet){
-
-		console.log(tweet);
-		// Rajout dans media
 		if(tweet.extended_entities || tweet.entities.media)
 		{
+			// Add in bloc media
 			if(tweet.extended_entities)
 			{
 				if((tweet.extended_entities.media[0].sizes.medium.w / tweet.extended_entities.media[0].sizes.medium.h) < 1)
@@ -80,7 +76,7 @@ $(document).ready(function()
 				{
 					$('.slicky-media').slick('slickAdd', 
 						'<div class="media-twitter">'
-					+		'<video width="' + sizeX + '%" height="' + sizeY + '%" loop style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + (sizeY / 2) + '%;" poster="' + tweet.extended_entities.media[0].media_url + '">'
+					+		'<video width="' + sizeX + '%" height="' + sizeY + '%" loop style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + ((sizeY / 2) + 5) + '%;" poster="' + tweet.extended_entities.media[0].media_url + '">'
 					+			  '<source src="' + tweet.extended_entities.media[0].video_info.variants[0].url + '" type="video/mp4">'
 					+		'</video>'
 					+	'</div>');
@@ -89,13 +85,13 @@ $(document).ready(function()
 				{
 					$('.slicky-media').slick('slickAdd', 
 						'<div class="media-twitter">'
-					+		'<img src="' + tweet.extended_entities.media[0].media_url  + '" width="' + sizeX + '%" height="' + sizeY + '%" style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + (sizeY / 2) + '%";" />'
+					+		'<img src="' + tweet.extended_entities.media[0].media_url  + '" width="' + sizeX + '%" height="' + sizeY + '%" style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + ((sizeY / 2) + 5) + '%";" />'
 					+	'</div>');
 				}
 			}
-			 else if(tweet.entities.media)
-			 {
-			 	if((tweet.entities.media[0].sizes.medium.w / tweet.entities.media[0].sizes.medium.h) < 1)
+			else if(tweet.entities.media)
+			{
+				if((tweet.entities.media[0].sizes.medium.w / tweet.entities.media[0].sizes.medium.h) < 1)
 				{
 					var sizeX = '60';
 					var sizeY = '80';
@@ -107,14 +103,17 @@ $(document).ready(function()
 				}
 			 	$('.slicky-media').slick('slickAdd', 
 					'<div class="media-twitter">'
-				+		'<img src="' + tweet.entities.media[0].media_url + '" width="' + sizeX  + '%" height="' + sizeY + '%" style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + (sizeY / 2) + '%";"' 
+				+		'<img src="' + tweet.entities.media[0].media_url + '" width="' + sizeX  + '%" height="' + sizeY + '%" style="margin-left: -' + (sizeX / 2) + '%; margin-top: -' + ((sizeY / 2) + 5) + '%";"' 
 				+		'/>'
 				+	'</div>');
-			 }
-		}
-		// Rajout dans text
-		if(tweet.extended_entities || tweet.entities.media)
-		{
+			}
+
+			// if($('.slicky-media .newtweet.slick-active').find('video').length > 0)
+			// 	var video = $('.slicky-media .slick-active').find('video').get(0).play();
+			// $('.slicky-media .newtweet').removeClass('newtweet');
+
+			// Add in bloc text
+
 			$('.slicky-text').slick('slickAdd', 
 				'<div class="bloc-tweet newtweet"><div class="text-twitter"><p class="text">' + tweet.text + '</p></div></div>');
 			$('.slicky-text .newtweet .text')
@@ -122,14 +121,10 @@ $(document).ready(function()
 			$(".slicky-text .newtweet .text a").attr("target","_blank");
 			$('.slicky-text .newtweet').removeClass('newtweet');
 		}
-		
 	});
 
 	$('.text-twitter .text').each(function(){
 		$(this).html(twttr.txt.autoLink($(this).html()));
-	})
-
+	});
 	$("a").attr("target","_blank");
-	
-
 })

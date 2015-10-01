@@ -9,6 +9,7 @@
 <body>
 	<div class="content">
 		<div class="bloc-media">
+			<!-- <div> <p> kljkl </p></div> -->
 			<div class="slickyy slicky-media">
 				<% listeTweets.forEach(function(tweet, index){ %>
 					<% if(tweet.extended_entities || tweet.entities.media) { %>
@@ -25,11 +26,11 @@
 								var sizeY = '60';
 							}
 								if(tweet.extended_entities.media[0].type == "animated_gif") { %>
-									<video width="<%= sizeX + "%" %>  " height="<%= sizeY + "%" %>" loop style="margin-left: -<%= (sizeX / 2) + "%" %>; margin-top: -<%= (sizeY / 2) + "%" %>;" poster="<%= tweet.extended_entities.media[0].media_url %>">
+									<video width="<%= sizeX + "%" %>  " height="<%= sizeY + "%" %>" loop style="margin-left: -<%= (sizeX / 2) + "%" %>; margin-top: -<%= ((sizeY / 2) + 5) + "%" %>;" poster="<%= tweet.extended_entities.media[0].media_url %>">
 									  <source src="<%= tweet.extended_entities.media[0].video_info.variants[0].url %>" type="video/mp4">
 									</video>
 									<% } else { %>
-									<img src="<%= tweet.extended_entities.media[0].media_url %>" width="<%= sizeX + "%" %>" height="<%= sizeY + "%" %>" style="margin-left: -<%= (sizeX / 2) + "%" %>; margin-top: -<%= (sizeY / 2) + "%" %>;" />
+									<img src="<%= tweet.extended_entities.media[0].media_url %>" width="<%= sizeX + "%" %>" height="<%= sizeY + "%" %>" style="margin-left: -<%= (sizeX / 2) + "%" %>; margin-top: -<%= ((sizeY / 2) + 5) + "%" %>;" />
 								<% } %>
 						<% }else if(tweet.entities.media){ %>
 							<% if((tweet.entities.media[0].sizes.medium.w / tweet.entities.media[0].sizes.medium.h) < 1)
@@ -43,7 +44,7 @@
 										var sizeY = '60';
 									}
 							%>
-						<img src="<%= tweet.entities.media[0].media_url %>" width="<%= sizeX + "%" %>" height="<%= sizeY + "%" %>" style="margin-left: -<%= (sizeX / 2) + "%" %>; margin-top: -<%= (sizeY / 2) + "%" %>;" 
+						<img src="<%= tweet.entities.media[0].media_url %>" width="<%= sizeX + "%" %>" height="<%= sizeY + "%" %>" style="margin-left: -<%= (sizeX / 2) + "%" %>; margin-top: -<%= ((sizeY / 2) + 5) + "%" %>;" 
 						/>
 						<% } %>
 					</div>

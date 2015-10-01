@@ -2,6 +2,7 @@ html, body
 {
     height:100%;
     width: 100%;
+  background-color: #eeeeee;
 }
 header, section, footer, aside, nav, article, figure
 {
@@ -159,7 +160,7 @@ button
 .bloc-text .text-head
 {
   position: absolute;
-  top: 10px;
+  top: 30px;
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -187,7 +188,7 @@ button
 .bloc-text .text-footer
 {
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   left: 0;
   width: 100%;
   z-index: 1000;
