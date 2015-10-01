@@ -60,7 +60,12 @@
 			<div class="slickyy slicky-text">
 				<% listeTweets.forEach(function(tweet, index){ %>
 					<% if(tweet.extended_entities || tweet.entities.media) { %>
-					<div class="bloc-tweet"><div class="text-twitter"><p class="text"><%= tweet.text %></p></div></div>
+					<div class="bloc-tweet">
+						<div class="text-twitter">
+							<p class="author"><a href="#">@<%= tweet.user.screen_name %></a> </p>
+							<p class="text"><%= tweet.text %></p>
+						</div>
+					</div>
 					<% } %>
 				<% }); %>
 			</div>

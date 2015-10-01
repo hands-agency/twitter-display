@@ -212,7 +212,12 @@ button
   color: #eeeeee;
   text-align: center;
 }
-
+.bloc-text .slicky-text p.author
+{
+  text-align: center;
+  font-size: 25px;
+  margin-top: 15px;
+}
 .bloc-text .slicky-text p.text a, .bloc-text .slicky-text p.author a
 {
   font-family: montserrat;

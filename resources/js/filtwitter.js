@@ -115,7 +115,13 @@ $(document).ready(function()
 			// Add in bloc text
 
 			$('.slicky-text').slick('slickAdd', 
-				'<div class="bloc-tweet newtweet"><div class="text-twitter"><p class="text">' + tweet.text + '</p></div></div>');
+				'<div class="bloc-tweet newtweet">'
+				+		'<div class="text-twitter">'
+				+			'<p class="author"><a href="#">@' + tweet.user.screen_name + '</a> </p>'
+				+			'<p class="text">'+ tweet.text + '</p>'
+				+		'</div>'
+				+	'</div>');
+
 			$('.slicky-text .newtweet .text')
 			$('.slicky-text .newtweet .text').html(twttr.txt.autoLink($('.slicky-text .newtweet .text').html()));
 			$(".slicky-text .newtweet .text a").attr("target","_blank");

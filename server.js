@@ -34,7 +34,6 @@ var params = ['text','user','entities', 'extended_entities'];
 var listeTweets = [];
 
 client.get('/search/tweets', {q: 'handsagency'}, function(error, tweets, response){
-  // console.log(tweets);
   for(var i = 0; i < tweets.statuses.length; i++)
   {
     var thetweet = tweets.statuses[i];
