@@ -1,6 +1,6 @@
 {
   "name": "twitter-display",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Twitter wall you know",
   "main": "./lib/twitter-display",
   "directories": {},
@@ -18,7 +18,9 @@
   },
   "keywords": [
     "twitter",
-    "display"
+    "display",
+    "wall",
+    "feed"
   ],
   "author": "Yasser Slimani Tlemcani",
   "license": "MIT",
