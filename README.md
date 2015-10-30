@@ -6,10 +6,10 @@
 var client = require('twitter-display');
 
 var twitter = {
-  consumer_key: '52zAOkgxVja573f2Ru7d2ANVh',
-  consumer_secret: 'L76VaUvWC0vBxjt5XHHtTMNBzvtlluh5Gr9rsnPrCKWOa0rd22',
-  access_token_key: '3686811135-cG5LYnJ97aLTFhBq9XOjpzH3Em7RxikS1O2EC1q',
-  access_token_secret: 'WMn6o6tKbdkITsUjjEtX5qlliltcM5SprPpE7IS8blCFh',
+  consumer_key: '',
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: '',
 }
 ```
 
