@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
 	var socket = io.connect('http://127.0.0.1:8081');
-	// Initialisation des slicks
+	// Init slick
 
 	// Le slick de gauche qui contiendra le media (image ou gif)
 	$('.slicky-media').slick(
@@ -20,7 +20,6 @@ $(document).ready(function()
         cssEase: 'cubic-bezier(0.950, 0.050, 0.795, 0.035)',
 		asNavFor: '.slicky-text'
 	});
-
 	// Le slick de droite qui contiendra le tweet
 	$('.slicky-text').slick(
 	{
@@ -41,15 +40,12 @@ $(document).ready(function()
 
 
 	// Pause ou Play sur une vidéo lors d'un changement de slide
-
 	if($('.slicky-media .slick-active').find('video').length > 0)
 		var video = $('.slicky-media .slick-active').find('video').get(0).play();
-
 	$('.slicky-media').on('beforeChange', function(event, slick, currentSlide, nextSlide){
 		if($(this).find('.slick-active video').length > 0)
 			$(this).find('.slick-active video').get(0).pause();
 	});
-
 	$('.slicky-media').on('afterChange', function(event, slick, currentSlide, nextSlide){
 		if($(this).find('.slick-active video').length > 0)
 	    	$(this).find('.slick-active video').get(0).play();
@@ -64,13 +60,11 @@ $(document).ready(function()
 			{
 				if((tweet.extended_entities.media[0].sizes.medium.w / tweet.extended_entities.media[0].sizes.medium.h) < 1)
 				{
-					var sizeX = '60';
-					var sizeY = '80';
+					var sizeX = '60';var sizeY = '80';
 				}
 				else
 				{
-					var sizeX = '80';
-					var sizeY = '60';
+					var sizeX = '80';var sizeY = '60';
 				}
 				if(tweet.extended_entities.media[0].type == "animated_gif")
 				{
@@ -93,13 +87,11 @@ $(document).ready(function()
 			{
 				if((tweet.entities.media[0].sizes.medium.w / tweet.entities.media[0].sizes.medium.h) < 1)
 				{
-					var sizeX = '60';
-					var sizeY = '80';
+					var sizeX = '60';var sizeY = '80';
 				}
 				else
 				{
-					var sizeX = '80';
-					var sizeY = '60';
+					var sizeX = '80';var sizeY = '60';
 				}
 			 	$('.slicky-media').slick('slickAdd', 
 					'<div class="media-twitter">'
@@ -107,13 +99,7 @@ $(document).ready(function()
 				+		'/>'
 				+	'</div>');
 			}
-
-			// if($('.slicky-media .newtweet.slick-active').find('video').length > 0)
-			// 	var video = $('.slicky-media .slick-active').find('video').get(0).play();
-			// $('.slicky-media .newtweet').removeClass('newtweet');
-
 			// Add in bloc text
-
 			$('.slicky-text').slick('slickAdd', 
 				'<div class="bloc-tweet newtweet">'
 				+		'<div class="text-twitter">'
@@ -121,7 +107,6 @@ $(document).ready(function()
 				+			'<p class="text">'+ tweet.text + '</p>'
 				+		'</div>'
 				+	'</div>');
-
 			$('.slicky-text .newtweet .text')
 			$('.slicky-text .newtweet .text').html(twttr.txt.autoLink($('.slicky-text .newtweet .text').html()));
 			$(".slicky-text .newtweet .text a").attr("target","_blank");
