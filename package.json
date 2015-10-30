@@ -1,6 +1,6 @@
 {
   "name": "twitter-display",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Twitter wall you know",
   "main": "./lib/twitter-display",
   "directories": {},

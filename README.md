@@ -43,7 +43,7 @@ Import js files from twitter-display at the end of body element
 ```
 And add this
 ```html
-<div class="twotterdisplay"></div>
+<div class="twitterdisplay"></div>
 ```
 
 ## Enjoy !!!!
