@@ -1,25 +1,25 @@
 {
   "name": "twitter-display",
   "version": "1.0.0",
-  "description": "display tweets",
-  "main": "server.js",
+  "description": "Twitter wall you know",
+  "main": "./lib/twitter-display",
+  "directories": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
-    "body-parser": "^1.14.1",
-    "cookie-parser": "^1.4.0",
-    "ejs": "^2.3.4",
     "express": "^4.13.3",
     "socket.io": "^1.3.7",
     "twitter": "^1.2.5"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/hands-agency/twitter-display.git"
   },
+  "keywords": [
+    "twitter",
+    "display"
+  ],
   "author": "Yasser Slimani Tlemcani",
   "license": "MIT",
   "bugs": {
