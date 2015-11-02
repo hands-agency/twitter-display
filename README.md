@@ -9,7 +9,7 @@ server = app.listen(port, host);
 ```
 
 ```javascript
-var client = require('twitter-display');
+var TwitterDisplay = require('twitter-display');
 
 var twitter = {
   consumer_key: '',
