@@ -43,7 +43,7 @@ Import js files from twitter-display at the end of body element
 ```html
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
-		var socket = io.connect('http://127.0.0.1:8081');
+		var socket = io.connect('http://host:port');
 	</script>
 <script type="text/javascript" src="/twitter-display/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="/twitter-display/js/slick.min.js"></script>
