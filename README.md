@@ -26,7 +26,7 @@ var hashtag = 'twitterdisplay';
 
 ## Call Twitter Display
 ```javascript
-var td = new TwitterDisplay(twitter, app, hashtag);
+var td = new TwitterDisplay(twitter, hashtag, app, server);
 ```
 
 
