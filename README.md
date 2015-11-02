@@ -3,6 +3,12 @@
 `npm install twitter-display`
 
 ```javascript
+var express = require('express');
+var app = express();
+server = app.listen(port, host);
+```
+
+```javascript
 var client = require('twitter-display');
 
 var twitter = {
@@ -36,6 +42,9 @@ Import css files from twitter-display inside the head
 Import js files from twitter-display at the end of body element
 ```html
 <script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+		var socket = io.connect('http://127.0.0.1:8081');
+	</script>
 <script type="text/javascript" src="/twitter-display/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="/twitter-display/js/slick.min.js"></script>
 <script type="text/javascript" src="/twitter-display/js/twitter-text.js"></script>
